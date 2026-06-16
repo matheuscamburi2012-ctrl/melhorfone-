@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+
+const products = [
+  { title: "Xiaomi Redmi Note 13 128GB 4G - AMOLED 120Hz + 108MP", image: "/images/placeholder-square.jpg", price: "R$ 849", originalPrice: "R$ 1.099", stars: 5, reviews: 2847, amazonUrl: "#", mlUrl: "#", badge: "🏆 Editor's Choice" },
+  { title: "Motorola Moto G84 5G 256GB - pOLED 120Hz + 50MP", image: "/images/placeholder-square.jpg", price: "R$ 1.199", originalPrice: "R$ 1.499", stars: 5, reviews: 1523, amazonUrl: "#", mlUrl: "#", badge: "5G" },
+  { title: "Samsung Galaxy A54 5G 256GB - Super AMOLED 120Hz", image: "/images/placeholder-square.jpg", price: "R$ 1.449", originalPrice: "R$ 1.799", stars: 5, reviews: 3210, amazonUrl: "#", mlUrl: "#" },
+  { title: "Realme C55 256GB - Bateria 5000mAh Carregador 33W", image: "/images/placeholder-square.jpg", price: "R$ 699", originalPrice: "R$ 899", stars: 4, reviews: 987, amazonUrl: "#", mlUrl: "#", badge: "💰 Barato" },
+  { title: "Poco X6 5G 256GB - Snapdragon 7s Gen 2", image: "/images/placeholder-square.jpg", price: "R$ 1.099", originalPrice: "R$ 1.299", stars: 4, reviews: 754, amazonUrl: "#", mlUrl: "#" },
+  { title: "iPhone 15 128GB - Câmera 48MP Dynamic Island", image: "/images/placeholder-square.jpg", price: "R$ 4.299", originalPrice: "R$ 4.999", stars: 5, reviews: 5123, amazonUrl: "#", mlUrl: "#", badge: "⭐ Premium" },
+];
+---
+
+<BaseLayout title="Melhores Celulares 2025" description="Ranking dos melhores smartphones disponíveis na Amazon e Mercado Livre.">
+  <div class="container" style="padding:32px 0">
+    <nav class="breadcrumb">
+      <a href="/">Home</a> <span>›</span> <span>Melhores Celulares 2025</span>
+    </nav>
+    <h1 class="section-title" style="font-size:1.6rem;margin-bottom:8px">🏆 Melhores Celulares de 2025</h1>
+    <p style="color:var(--text-muted);margin-bottom:28px">Ranking atualizado com os smartphones mais bem avaliados na Amazon e Mercado Livre</p>
+
+    <!-- Faixas de preço -->
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px">
+      {[
+        { label: "Todos", href: "/melhores" },
+        { label: "Até R$ 500", href: "/preco/ate-500" },
+        { label: "Até R$ 1.000", href: "/preco/ate-1000" },
+        { label: "Até R$ 2.000", href: "/preco/ate-2000" },
+        { label: "Premium", href: "/preco/premium" },
+      ].map(f => (
+        <a href={f.href} class="tag" style="padding:8px 16px;font-size:.85rem">{f.label}</a>
+      ))}
+    </div>
+
+    <div class="grid-3" style="position:relative">
+      {products.map(product => <ProductCard {...product} />)}
+    </div>
+  </div>
+</BaseLayout>

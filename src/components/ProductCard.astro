@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  price: string;
+  originalPrice?: string;
+  stars: number;
+  reviews?: number;
+  amazonUrl?: string;
+  mlUrl?: string;
+  badge?: string;
+}
+
+const { title, image, price, originalPrice, stars, reviews, amazonUrl, mlUrl, badge } = Astro.props;
+---
+
+<article class="card">
+  {badge && <div style="position:absolute;top:10px;left:10px;z-index:1;background:var(--primary);color:#fff;padding:4px 10px;border-radius:50px;font-size:.72rem;font-weight:700">{badge}</div>}
+  <div style="position:relative">
+    <div class="card-img">
+      <img src={image} alt={title} loading="lazy" width="400" height="400" style="object-fit:contain;background:#f8f8f8" />
+    </div>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title" style="-webkit-line-clamp:3">{title}</h3>
+    <div class="card-stars">
+      {"★".repeat(Math.round(stars))}{"☆".repeat(5 - Math.round(stars))}
+      {reviews && <span style="color:var(--text-muted);font-size:.75rem;margin-left:4px">({reviews})</span>}
+    </div>
+    <div class="card-price">
+      {originalPrice && <div class="original">{originalPrice}</div>}
+      <div>{price}</div>
+    </div>
+    <div class="store-btns">
+      {amazonUrl && (
+        <a href={amazonUrl} target="_blank" rel="nofollow noopener sponsored" class="btn btn-amazon">
+          🛒 Amazon
+        </a>
+      )}
+      {mlUrl && (
+        <a href={mlUrl} target="_blank" rel="nofollow noopener sponsored" class="btn btn-ml">
+          🟡 Mercado Livre
+        </a>
+      )}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import ProductCard from '../components/ProductCard.astro';
+
+// Imagens: Unsplash para banners de posts, imagens oficiais para produtos
+const featuredPosts = [
+  {
+    title: "10 Melhores Celulares Custo-Benefício de 2025",
+    excerpt: "Selecionamos os smartphones com melhor relação qualidade/preço disponíveis na Amazon e Mercado Livre.",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=338&fit=crop",
+    category: "Guia de Compra",
+    date: "12 Jun 2025",
+    slug: "melhores-celulares-custo-beneficio-2025",
+    stars: 5,
+  },
+  {
+    title: "Xiaomi Redmi Note 13 vs Motorola Moto G84: Qual Comprar?",
+    excerpt: "Comparamos câmera, bateria, desempenho e preço dos dois intermediários mais vendidos do Brasil.",
+    image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=338&fit=crop",
+    category: "Comparativo",
+    date: "10 Jun 2025",
+    slug: "xiaomi-redmi-note-13-vs-motorola-moto-g84",
+    stars: 4,
+  },
+  {
+    title: "Melhores Celulares até R$ 1.000 em 2025",
+    excerpt: "Seleção dos smartphones mais completos para quem tem um orçamento limitado mas quer qualidade.",
+    image: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=338&fit=crop",
+    category: "Guia de Compra",
+    date: "8 Jun 2025",
+    slug: "melhores-celulares-ate-1000-reais",
+    stars: 5,
+  },
+];
+
+const recentPosts = [
+  {
+    title: "Samsung Galaxy A55 Review: Vale o Preço?",
+    excerpt: "Testamos o Galaxy A55 por 30 dias e contamos tudo sobre câmera, bateria e desempenho.",
+    image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&h=338&fit=crop",
+    category: "Review",
+    date: "7 Jun 2025",
+    slug: "samsung-galaxy-a55-review",
+  },
+  {
+    title: "Melhores Celulares para Fotografia 2025",
+    excerpt: "Smartphones com câmeras incríveis por preços acessíveis.",
+    image: "https://images.unsplash.com/photo-1617778668659-ce80c9bcc93e?w=600&h=338&fit=crop",
+    category: "Guia de Compra",
+    date: "5 Jun 2025",
+    slug: "melhores-celulares-fotografia-2025",
+  },
+  {
+    title: "iPhone 15 vs Samsung Galaxy S24: Qual é Melhor?",
+    excerpt: "Confronto completo entre os dois flagships mais populares do mercado.",
+    image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=338&fit=crop",
+    category: "Comparativo",
+    date: "3 Jun 2025",
+    slug: "iphone-15-vs-samsung-galaxy-s24",
+  },
+  {
+    title: "Celular com Melhor Bateria 2025: Top 8",
+    excerpt: "Seleção dos celulares com maior autonomia de bateria disponíveis no Brasil.",
+    image: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=338&fit=crop",
+    category: "Guia de Compra",
+    date: "1 Jun 2025",
+    slug: "celular-melhor-bateria-2025",
+  },
+];
+
+// Imagens de produto: fundo branco, estilo loja
+const topProducts = [
+  {
+    title: "Xiaomi Redmi Note 13 128GB 4G — Tela AMOLED 120Hz + 108MP",
+    image: "https://http2.mlstatic.com/D_NQ_NP_617477-MLA74335758553_022024-O.webp",
+    price: "R$ 849",
+    originalPrice: "R$ 1.099",
+    stars: 5,
+    reviews: 2847,
+    amazonUrl: "#",
+    mlUrl: "#",
+    badge: "Mais Vendido",
+  },
+  {
+    title: "Motorola Moto G84 5G 256GB — pOLED 120Hz + 50MP",
+    image: "https://http2.mlstatic.com/D_NQ_NP_771036-MLA71992506512_092023-O.webp",
+    price: "R$ 1.199",
+    originalPrice: "R$ 1.499",
+    stars: 4,
+    reviews: 1523,
+    amazonUrl: "#",
+    mlUrl: "#",
+    badge: "5G",
+  },
+  {
+    title: "Samsung Galaxy A54 5G 256GB — Super AMOLED 120Hz",
+    image: "https://http2.mlstatic.com/D_NQ_NP_872057-MLA69952898473_062023-O.webp",
+    price: "R$ 1.449",
+    originalPrice: "R$ 1.799",
+    stars: 5,
+    reviews: 3210,
+    amazonUrl: "#",
+    mlUrl: "#",
+  },
+  {
+    title: "Realme C55 256GB — Bateria 5000mAh + Carregador 33W",
+    image: "https://http2.mlstatic.com/D_NQ_NP_859455-MLA71611270572_092023-O.webp",
+    price: "R$ 699",
+    originalPrice: "R$ 899",
+    stars: 4,
+    reviews: 987,
+    amazonUrl: "#",
+    mlUrl: "#",
+    badge: "Barato",
+  },
+];
+---
+
+<BaseLayout
+  title="Melhores Celulares 2025"
+  description="Guia completo de smartphones: comparativos, reviews e as melhores ofertas na Amazon e Mercado Livre."
+>
+
+  <!-- HERO -->
+  <section class="hero-banner">
+    <h1>Encontre o Celular Perfeito pelo Melhor Preço</h1>
+    <p>Comparativos, reviews e guias de compra para te ajudar a escolher o smartphone ideal na Amazon e Mercado Livre.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="/melhores" class="btn btn-primary">Ver Melhores Celulares</a>
+      <a href="/comparativos" class="btn btn-outline">Comparar Modelos</a>
+    </div>
+  </section>
+
+  <!-- DESTAQUES -->
+  <section class="main-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">⭐ Destaques</h2>
+        <a href="/celulares" class="see-all">Ver todos →</a>
+      </div>
+      <div class="featured-grid">
+        {featuredPosts.map(post => <PostCard {...post} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUTOS EM OFERTA -->
+  <section class="main-section" style="background:var(--bg-white);padding:32px 0">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">🔥 Mais Bem Avaliados</h2>
+        <a href="/melhores" class="see-all">Ver mais →</a>
+      </div>
+      <div class="grid-4">
+        {topProducts.map(product => <ProductCard {...product} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA WHATSAPP -->
+  <div class="container">
+    <div class="cta-whatsapp">
+      <h2>📱 Grupo de Ofertas de Celulares</h2>
+      <p>Receba as melhores ofertas de smartphones diretamente no seu WhatsApp antes que acabem!</p>
+      <a href="https://wa.me/seu-numero" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        Entrar no Grupo Gratuito
+      </a>
+    </div>
+  </div>
+
+  <!-- POSTS RECENTES -->
+  <section class="main-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">🆕 Publicações Recentes</h2>
+        <a href="/celulares" class="see-all">Ver todos →</a>
+      </div>
+      <div class="grid-4">
+        {recentPosts.map(post => <PostCard {...post} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIAS -->
+  <section class="main-section" style="background:var(--bg-white);padding:32px 0">
+    <div class="container">
+      <h2 class="section-title">📂 Navegar por Categoria</h2>
+      <div class="grid-4" style="gap:12px">
+        {[
+          { icon: "💰", label: "Até R$ 500", href: "/preco/ate-500" },
+          { icon: "📊", label: "Até R$ 1.000", href: "/preco/ate-1000" },
+          { icon: "🏆", label: "Premium", href: "/preco/premium" },
+          { icon: "📸", label: "Melhor Câmera", href: "/categoria/camera" },
+          { icon: "🔋", label: "Melhor Bateria", href: "/categoria/bateria" },
+          { icon: "⚡", label: "Melhor Desempenho", href: "/categoria/desempenho" },
+          { icon: "5G", label: "Com 5G", href: "/categoria/5g" },
+          { icon: "📱", label: "Tela Grande", href: "/categoria/tela-grande" },
+        ].map(cat => (
+          <a href={cat.href} class="cat-card">
+            <div class="cat-icon">{cat.icon}</div>
+            {cat.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.cat-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: .9rem;
+  transition: all .2s;
+  border: 2px solid var(--border);
+  display: block;
+  color: var(--text);
+}
+.cat-card:hover { border-color: var(--primary); color: var(--primary); background: #fff5f5; transform: translateY(-2px); }
+.cat-icon { font-size: 1.5rem; margin-bottom: 6px; }
+</style>

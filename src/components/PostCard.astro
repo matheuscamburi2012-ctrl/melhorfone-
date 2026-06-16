@@ -1,0 +1,40 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  date: string;
+  slug: string;
+  price?: string;
+  originalPrice?: string;
+  stars?: number;
+}
+
+const { title, excerpt, image, category, date, slug, price, originalPrice, stars } = Astro.props;
+---
+
+<article class="card">
+  <a href={`/posts/${slug}`} class="card-img">
+    <img src={image} alt={title} loading="lazy" width="400" height="225" />
+  </a>
+  <div class="card-body">
+    <div class="card-category">{category}</div>
+    <h3 class="card-title">
+      <a href={`/posts/${slug}`}>{title}</a>
+    </h3>
+    <p class="card-excerpt">{excerpt}</p>
+    {price && (
+      <div class="card-price">
+        {originalPrice && <span class="original">De {originalPrice}</span>}
+        <span> {price}</span>
+      </div>
+    )}
+    {stars && (
+      <div class="card-stars">{"★".repeat(stars)}{"☆".repeat(5 - stars)}</div>
+    )}
+    <div class="card-meta">
+      <span>📅 {date}</span>
+    </div>
+  </div>
+</article>

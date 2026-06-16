@@ -1,0 +1,40 @@
+---
+const navLinks = [
+  { label: "Celulares", href: "/celulares" },
+  { label: "Melhores de 2025", href: "/melhores" },
+  { label: "Comparativos", href: "/comparativos" },
+  { label: "Custo-Benefício", href: "/custo-beneficio" },
+  { label: "Samsung", href: "/marca/samsung" },
+  { label: "Xiaomi", href: "/marca/xiaomi" },
+  { label: "Motorola", href: "/marca/motorola" },
+  { label: "iPhone", href: "/marca/iphone" },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link" aria-label="MelhorFone - Início">
+      <img src="/logo.svg" alt="MelhorFone" class="logo-img" width="200" height="54" />
+    </a>
+    <div class="header-right">
+      <div class="search-box">
+        <input type="search" placeholder="Buscar celular..." aria-label="Buscar celular" />
+        <button type="submit" aria-label="Buscar">🔍</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav" aria-label="Navegação principal">
+  <div class="container">
+    {navLinks.map(link => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+  </div>
+</nav>
+
+<style>
+.logo-link { display: flex; align-items: center; }
+.logo-img { height: 44px; width: auto; }
+@media (max-width: 480px) { .logo-img { height: 36px; } }
+</style>

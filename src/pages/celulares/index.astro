@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = [
+  { title: "10 Melhores Celulares Custo-Benefício de 2025", excerpt: "Selecionamos os melhores smartphones para cada faixa de preço.", image: "/images/placeholder-wide.jpg", category: "Guia de Compra", date: "12 Jun 2025", slug: "melhores-celulares-custo-beneficio-2025", stars: 5 },
+  { title: "Samsung Galaxy A55 Review: Vale o Preço?", excerpt: "Testamos o A55 por 30 dias. Confira nossa análise completa.", image: "/images/placeholder-wide.jpg", category: "Review", date: "7 Jun 2025", slug: "samsung-galaxy-a55-review", stars: 4 },
+  { title: "Xiaomi Redmi Note 13 vs Motorola Moto G84", excerpt: "Comparamos os dois intermediários mais populares do Brasil.", image: "/images/placeholder-wide.jpg", category: "Comparativo", date: "10 Jun 2025", slug: "xiaomi-redmi-note-13-vs-motorola-moto-g84", stars: 4 },
+  { title: "Melhores Celulares até R$ 1.000 em 2025", excerpt: "Os melhores smartphones para quem quer qualidade sem gastar muito.", image: "/images/placeholder-wide.jpg", category: "Guia de Compra", date: "8 Jun 2025", slug: "melhores-celulares-ate-1000-reais", stars: 5 },
+  { title: "Melhores Celulares para Fotografia 2025", excerpt: "Câmeras incríveis por preços acessíveis.", image: "/images/placeholder-wide.jpg", category: "Guia de Compra", date: "5 Jun 2025", slug: "melhores-celulares-fotografia-2025", stars: 5 },
+  { title: "Celular com Melhor Bateria 2025: Top 8", excerpt: "Os celulares com maior autonomia disponíveis no Brasil.", image: "/images/placeholder-wide.jpg", category: "Guia de Compra", date: "1 Jun 2025", slug: "celular-melhor-bateria-2025", stars: 4 },
+  { title: "iPhone 15 vs Samsung Galaxy S24: Qual é Melhor?", excerpt: "Confronto completo entre os dois flagships mais populares.", image: "/images/placeholder-wide.jpg", category: "Comparativo", date: "3 Jun 2025", slug: "iphone-15-vs-samsung-galaxy-s24", stars: 5 },
+  { title: "Motorola Moto G84 5G: Review Completo 2025", excerpt: "Analisamos o Moto G84 5G em todos os aspectos.", image: "/images/placeholder-wide.jpg", category: "Review", date: "28 Mai 2025", slug: "motorola-moto-g84-5g-review", stars: 4 },
+];
+---
+
+<BaseLayout title="Celulares" description="Todos os guias, reviews e comparativos de smartphones.">
+  <div class="container" style="padding:32px 0">
+    <nav class="breadcrumb">
+      <a href="/">Home</a> <span>›</span> <span>Celulares</span>
+    </nav>
+    <h1 class="section-title" style="font-size:1.6rem;margin-bottom:28px">📱 Celulares</h1>
+
+    <!-- Filtros rápidos -->
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px">
+      {["Todos", "Reviews", "Guias de Compra", "Comparativos", "Samsung", "Xiaomi", "Motorola", "iPhone"].map(f => (
+        <a href="#" class="tag" style="padding:6px 14px">{f}</a>
+      ))}
+    </div>
+
+    <div class="grid-4">
+      {posts.map(post => <PostCard {...post} />)}
+    </div>
+
+    <div class="pagination">
+      <span class="active">1</span>
+      <a href="?p=2">2</a>
+      <a href="?p=3">3</a>
+      <a href="?p=4">4</a>
+      <span>…</span>
+      <a href="?p=10">10</a>
+    </div>
+  </div>
+</BaseLayout>

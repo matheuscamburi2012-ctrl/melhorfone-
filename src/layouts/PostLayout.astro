@@ -1,0 +1,104 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date: string;
+  category: string;
+  image?: string;
+  author?: string;
+}
+
+const { title, description, date, category, image, author = "CelularExpert" } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <div class="container" style="padding-top:24px">
+
+    <nav class="breadcrumb">
+      <a href="/">Home</a> <span>›</span>
+      <a href="/celulares">{category}</a> <span>›</span>
+      <span>{title}</span>
+    </nav>
+
+    <div class="layout-sidebar">
+      <article class="post-content">
+        {image && (
+          <img
+            src={image}
+            alt={title}
+            style="width:100%;border-radius:8px;margin-bottom:24px;aspect-ratio:16/9;object-fit:cover"
+          />
+        )}
+        <div class="post-meta" style="display:flex;gap:16px;font-size:.82rem;color:var(--text-muted);margin-bottom:20px;align-items:center">
+          <span>📅 {date}</span>
+          <span>✍️ {author}</span>
+          <span class="tag">{category}</span>
+          <span class="affiliate-badge">🔗 Links de afiliado</span>
+        </div>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:16px;line-height:1.25">{title}</h1>
+
+        <slot />
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-widget">
+          <h3>🔥 Ofertas Relâmpago</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <a href="#" class="card-h" style="text-decoration:none">
+              <div class="card-img"><img src="/images/placeholder-sm.jpg" alt="Oferta" width="120" height="120" /></div>
+              <div class="card-body">
+                <p style="font-size:.82rem;font-weight:600;line-height:1.3">Xiaomi Redmi Note 13</p>
+                <p style="color:var(--primary);font-weight:800;font-size:.9rem">R$ 899</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <h3>📊 Posts Populares</h3>
+          <ul style="display:flex;flex-direction:column;gap:10px">
+            <li><a href="#" style="font-size:.85rem;font-weight:600;color:var(--text)">10 Melhores Celulares Custo-Benefício 2025</a></li>
+            <li><a href="#" style="font-size:.85rem;font-weight:600;color:var(--text)">Xiaomi vs Motorola: qual comprar?</a></li>
+            <li><a href="#" style="font-size:.85rem;font-weight:600;color:var(--text)">Melhores celulares até R$ 1000</a></li>
+          </ul>
+        </div>
+
+        <div class="cta-whatsapp" style="margin:0">
+          <h2>💬 Grupo de Ofertas</h2>
+          <p>Receba as melhores ofertas de celulares no seu WhatsApp!</p>
+          <a href="https://wa.me/seu-numero" target="_blank" class="btn btn-whatsapp">Entrar no Grupo</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.post-content :global(h2) { font-size:1.35rem; font-weight:800; margin:28px 0 12px; border-left:4px solid var(--primary); padding-left:10px; }
+.post-content :global(h3) { font-size:1.1rem; font-weight:700; margin:22px 0 10px; }
+.post-content :global(p) { margin-bottom:16px; line-height:1.75; }
+.post-content :global(ul), .post-content :global(ol) { padding-left:20px; margin-bottom:16px; }
+.post-content :global(li) { margin-bottom:6px; line-height:1.6; }
+.post-content :global(table) { width:100%; border-collapse:collapse; margin-bottom:20px; font-size:.9rem; }
+.post-content :global(th) { background:var(--primary); color:#fff; padding:10px 14px; text-align:left; }
+.post-content :global(td) { padding:9px 14px; border-bottom:1px solid var(--border); }
+.post-content :global(tr:nth-child(even) td) { background:#fafafa; }
+.post-content :global(.product-box) {
+  border:2px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+  margin:24px 0;
+  background:#fafffe;
+}
+.post-content :global(blockquote) {
+  border-left:4px solid var(--secondary);
+  background:#fffbf0;
+  padding:14px 18px;
+  margin:20px 0;
+  border-radius:0 6px 6px 0;
+  font-style:italic;
+}
+</style>
