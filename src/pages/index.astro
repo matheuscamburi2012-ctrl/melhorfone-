@@ -3,7 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import ProductCard from '../components/ProductCard.astro';
 
-// Imagens: Unsplash para banners de posts, imagens oficiais para produtos
+const TAG = "melhorfonevlo-20";
+
 const featuredPosts = [
   {
     title: "10 Melhores Celulares Custo-Benefício de 2025",
@@ -69,7 +70,6 @@ const recentPosts = [
   },
 ];
 
-// Imagens de produto: fundo branco, estilo loja
 const topProducts = [
   {
     title: "Xiaomi Redmi Note 13 128GB 4G — Tela AMOLED 120Hz + 108MP",
@@ -78,8 +78,8 @@ const topProducts = [
     originalPrice: "R$ 1.099",
     stars: 5,
     reviews: 2847,
-    amazonUrl: "#",
-    mlUrl: "#",
+    amazonUrl: `https://www.amazon.com.br/s?k=Xiaomi+Redmi+Note+13+128GB&tag=${TAG}`,
+    mlUrl: "https://www.mercadolivre.com.br/celulares-smartphones/xiaomi/redmi-note-13",
     badge: "Mais Vendido",
   },
   {
@@ -89,8 +89,8 @@ const topProducts = [
     originalPrice: "R$ 1.499",
     stars: 4,
     reviews: 1523,
-    amazonUrl: "#",
-    mlUrl: "#",
+    amazonUrl: `https://www.amazon.com.br/s?k=Motorola+Moto+G84+5G&tag=${TAG}`,
+    mlUrl: "https://www.mercadolivre.com.br/celulares-smartphones/motorola/moto-g84",
     badge: "5G",
   },
   {
@@ -100,8 +100,8 @@ const topProducts = [
     originalPrice: "R$ 1.799",
     stars: 5,
     reviews: 3210,
-    amazonUrl: "#",
-    mlUrl: "#",
+    amazonUrl: `https://www.amazon.com.br/s?k=Samsung+Galaxy+A54+5G&tag=${TAG}`,
+    mlUrl: "https://www.mercadolivre.com.br/celulares-smartphones/samsung/galaxy-a54",
   },
   {
     title: "Realme C55 256GB — Bateria 5000mAh + Carregador 33W",
@@ -110,8 +110,8 @@ const topProducts = [
     originalPrice: "R$ 899",
     stars: 4,
     reviews: 987,
-    amazonUrl: "#",
-    mlUrl: "#",
+    amazonUrl: `https://www.amazon.com.br/s?k=Realme+C55&tag=${TAG}`,
+    mlUrl: "https://www.mercadolivre.com.br/celulares-smartphones/realme/c55",
     badge: "Barato",
   },
 ];
@@ -122,7 +122,6 @@ const topProducts = [
   description="Guia completo de smartphones: comparativos, reviews e as melhores ofertas na Amazon e Mercado Livre."
 >
 
-  <!-- HERO -->
   <section class="hero-banner">
     <h1>Encontre o Celular Perfeito pelo Melhor Preço</h1>
     <p>Comparativos, reviews e guias de compra para te ajudar a escolher o smartphone ideal na Amazon e Mercado Livre.</p>
@@ -132,7 +131,6 @@ const topProducts = [
     </div>
   </section>
 
-  <!-- DESTAQUES -->
   <section class="main-section">
     <div class="container">
       <div class="section-header">
@@ -145,7 +143,6 @@ const topProducts = [
     </div>
   </section>
 
-  <!-- PRODUTOS EM OFERTA -->
   <section class="main-section" style="background:var(--bg-white);padding:32px 0">
     <div class="container">
       <div class="section-header">
@@ -158,7 +155,6 @@ const topProducts = [
     </div>
   </section>
 
-  <!-- CTA WHATSAPP -->
   <div class="container">
     <div class="cta-whatsapp">
       <h2>📱 Grupo de Ofertas de Celulares</h2>
@@ -169,7 +165,6 @@ const topProducts = [
     </div>
   </div>
 
-  <!-- POSTS RECENTES -->
   <section class="main-section">
     <div class="container">
       <div class="section-header">
@@ -182,7 +177,6 @@ const topProducts = [
     </div>
   </section>
 
-  <!-- CATEGORIAS -->
   <section class="main-section" style="background:var(--bg-white);padding:32px 0">
     <div class="container">
       <h2 class="section-title">📂 Navegar por Categoria</h2>
