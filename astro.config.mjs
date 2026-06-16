@@ -6,12 +6,7 @@ export default defineConfig({
   site: 'https://melhorfone.vlog.br',
 
   integrations: [
-    sitemap({
-      // O sitemap.xml é gerado automaticamente em /sitemap-index.xml
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date(),
-    }),
+    sitemap(),
   ],
 
   // Compressão de HTML para melhor performance
