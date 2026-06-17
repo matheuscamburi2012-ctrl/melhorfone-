@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = [
+  { title: "Motorola Moto G84 5G: Review Completo 2025", excerpt: "Tela pOLED, 256GB e carregador 33W na caixa. Vale a pena?", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=338&fit=crop", category: "Review", date: "16 Jun 2025", slug: "motorola-moto-g84-review", stars: 4 },
+  { title: "Celular com Melhor Bateria 2025: Top 8", excerpt: "Moto G Power 5G lidera com 6000mAh de autonomia.", image: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=338&fit=crop", category: "Guia de Compra", date: "1 Jun 2025", slug: "celular-melhor-bateria-2025", stars: 4 },
+  { title: "Melhores Celulares 5G até R$ 2.000", excerpt: "Moto G84 5G é nossa escolha número 1 na faixa.", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&h=338&fit=crop", category: "Guia de Compra", date: "16 Jun 2025", slug: "melhores-celulares-5g-ate-2000-reais", stars: 5 },
+];
+---
+
+<BaseLayout title="Celulares Motorola 2025 — Reviews e Guias" description="Reviews e guias dos melhores celulares Motorola disponíveis no Brasil em 2025.">
+  <div class="container" style="padding:32px 0">
+    <nav class="breadcrumb">
+      <a href="/">Home</a> <span>›</span> <span>Motorola</span>
+    </nav>
+    <h1 class="section-title" style="font-size:1.6rem;margin-bottom:8px">📱 Celulares Motorola</h1>
+    <p style="color:var(--text-muted);margin-bottom:28px">Reviews e guias dos melhores Motorola disponíveis no Brasil</p>
+    <div class="grid-3">
+      {posts.map(post => <PostCard {...post} />)}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+const posts = [
+  { title: "10 Melhores Celulares Custo-Benefício de 2025", excerpt: "Selecionamos os melhores smartphones para cada faixa de preço.", image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=338&fit=crop", category: "Guia de Compra", date: "12 Jun 2025", slug: "melhores-celulares-custo-beneficio-2025", stars: 5 },
+  { title: "Melhores Celulares até R$ 1.000 em 2025", excerpt: "Os melhores smartphones para quem quer qualidade sem gastar muito.", image: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=338&fit=crop", category: "Guia de Compra", date: "8 Jun 2025", slug: "melhores-celulares-ate-1000-reais", stars: 5 },
+  { title: "Melhores Celulares 5G até R$ 2.000", excerpt: "5G acessível: os melhores smartphones com conectividade 5G.", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&h=338&fit=crop", category: "Guia de Compra", date: "16 Jun 2025", slug: "melhores-celulares-5g-ate-2000-reais", stars: 5 },
+  { title: "Celular com Melhor Bateria 2025: Top 8", excerpt: "Os celulares com maior autonomia disponíveis no Brasil.", image: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=338&fit=crop", category: "Guia de Compra", date: "1 Jun 2025", slug: "celular-melhor-bateria-2025", stars: 4 },
+  { title: "Melhores Celulares para Fotografia 2025", excerpt: "Câmeras incríveis por preços acessíveis.", image: "https://images.unsplash.com/photo-1617778668659-ce80c9bcc93e?w=600&h=338&fit=crop", category: "Guia de Compra", date: "5 Jun 2025", slug: "melhores-celulares-fotografia-2025", stars: 5 },
+  { title: "Melhores Celulares para Jogos 2025", excerpt: "Top 6 smartphones gamer para Free Fire, PUBG e Genshin.", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=338&fit=crop", category: "Guia de Compra", date: "16 Jun 2025", slug: "melhores-celulares-para-jogos-2025", stars: 5 },
+];
+---
+
+<BaseLayout title="Melhores Celulares Custo-Benefício 2025" description="Guias de compra com os smartphones com melhor custo-benefício disponíveis na Amazon e Mercado Livre.">
+  <div class="container" style="padding:32px 0">
+    <nav class="breadcrumb">
+      <a href="/">Home</a> <span>›</span> <span>Custo-Benefício</span>
+    </nav>
+    <h1 class="section-title" style="font-size:1.6rem;margin-bottom:8px">💰 Melhor Custo-Benefício</h1>
+    <p style="color:var(--text-muted);margin-bottom:28px">Os smartphones que entregam mais pelo seu dinheiro</p>
+    <div class="grid-3">
+      {posts.map(post => <PostCard {...post} />)}
+    </div>
+  </div>
+</BaseLayout>

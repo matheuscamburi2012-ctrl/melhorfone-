@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = [
+  { title: "Melhores Celulares Samsung 2025", excerpt: "Do Galaxy A15 ao S24 Ultra: qual Samsung comprar em 2025?", image: "https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?w=600&h=338&fit=crop", category: "Guia de Compra", date: "16 Jun 2025", slug: "melhores-celulares-samsung-2025", stars: 5 },
+  { title: "Samsung Galaxy A55 Review: Vale o Preço?", excerpt: "Testamos o A55 por 30 dias. Confira nossa análise completa.", image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&h=338&fit=crop", category: "Review", date: "7 Jun 2025", slug: "samsung-galaxy-a55-review", stars: 4 },
+  { title: "iPhone 15 vs Samsung Galaxy S24: Qual é Melhor?", excerpt: "Confronto completo entre os dois flagships mais populares.", image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=338&fit=crop", category: "Comparativo", date: "3 Jun 2025", slug: "iphone-15-vs-samsung-galaxy-s24", stars: 5 },
+];
+---
+
+<BaseLayout title="Celulares Samsung 2025 — Reviews e Guias" description="Reviews, comparativos e guias de compra dos melhores celulares Samsung disponíveis no Brasil.">
+  <div class="container" style="padding:32px 0">
+    <nav class="breadcrumb">
+      <a href="/">Home</a> <span>›</span> <span>Samsung</span>
+    </nav>
+    <h1 class="section-title" style="font-size:1.6rem;margin-bottom:8px">📱 Celulares Samsung</h1>
+    <p style="color:var(--text-muted);margin-bottom:28px">Reviews e guias dos melhores Galaxy disponíveis no Brasil</p>
+    <div class="grid-3">
+      {posts.map(post => <PostCard {...post} />)}
+    </div>
+  </div>
+</BaseLayout>
